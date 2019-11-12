@@ -1,0 +1,178 @@
+body{
+    font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+}
+table {
+    border-collapse: separate;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    border-collapse: separate;
+    border: 3px solid rgba(255,255,255,0);
+    width: 54px;
+    height: 54px;
+}
+
+#central{
+    text-align: center;
+}
+
+#runningArea {
+    width: 100%;
+    height: 278px;
+}
+
+#Flycoin{
+    width:64px;
+    height:64px;
+    position:absolute;
+    top:35%;left:60%;
+    visibility: hidden;
+}
+
+@keyframes borderColor{
+    0%{
+        border: 3px solid yellow;
+    }
+    25%{
+        border: 3px solid red;
+    }
+    50%{
+        border: 3px solid white;
+    }
+    75%{
+        border: 3px solid red;
+    }
+    100%{
+        border: 3px solid yellow;
+    }
+}
+
+.yellowLight {
+    animation-name: borderColor ;
+    animation-duration:2s ;
+    border: 3px solid yellow;
+}
+
+.normal {
+    border: 3px solid rgba(255,255,255,0);
+}
+
+#setBoard>div {
+    padding: auto;
+    margin-top: 9px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 6px;
+    text-align: center;
+    display: inline-block;
+    width: 74px;
+    height: 155px;
+}
+
+h3{
+    margin: 0px;
+}
+
+p>input {
+    width: 68px;
+}
+
+@keyframes fontColor{
+    0%{
+        color: yellow;
+    }
+    25%{
+        color: red;
+    }
+    50%{
+        color: white;
+    }
+    75%{
+        color: red;
+    }
+    100%{
+        color: yellow;
+    }
+}
+
+.font{
+    animation-name: fontColor;
+    animation-duration:2s ;
+    color:yellow;
+}
+
+@keyframes navFont{
+    0%{
+        font-size: 1.5rem;
+    }
+    99%{
+        font-size: 1.5rem;
+    }
+    100%{
+        font-size: 1rem;
+    }
+}
+.navFont{
+    animation-name: navFont;
+    animation-duration:1s ;
+}
+
+@keyframes flyCoin{
+    0%{
+        visibility: visible;
+        top: 74%;
+        left: 77%;
+    }
+    10%{
+        top: 68%;
+        left: 79%;
+    }
+    20%{
+        top: 62%;
+        left: 80%;
+    }
+    30%{
+        top: 56%;
+        left: 81%;
+    }
+    40%{
+        top: 50%;
+        left: 82%;
+    }
+    50%{
+        top: 44%;
+        left: 83%;
+    }
+    60%{
+        top: 38%;
+        left: 83%;
+    }
+    70%{
+        top: 32%;
+        left: 84%;
+    }
+    80%{
+        top: 26%;
+        left: 84%;
+    }
+    90%{
+        top: 20%;
+        left: 85%;
+    }
+    99%{
+        top: 14%;
+        left: 85%;
+        visibility: visible;
+    }
+    100%{
+        top: 14%;
+        left: 85%;
+        visibility: hidden;
+    }
+}
+.Coin{
+    animation-name: flyCoin;
+    animation-duration:1s ;
+}

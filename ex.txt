@@ -1,0 +1,339 @@
+Lab: Laravel View 與 Blade 語法
+
+
+1.  建立開發環境
+
+
+1.0 請依 setup.txt 完成安裝與設計。
+
+
+1.1 在檔案總管，滑鼠右鍵點按例如 c:\Lab 資料夾
+    | 快捷功能表 Git Bach Here
+
+
+1.2 輸入下列指令，建立一個新的 Laravel 專案
+    laravel new view
+
+
+1.3 在檔案總管，滑鼠右鍵點按 view 資料夾 | Open with Code
+
+
+
+
+2.  路由、控制器、畫面三者如何連動
+
+
+2.1 編輯 routes\web.php
+
+原本的程式:
+Route::get('/', function () {
+    return view('welcome');
+});
+
+改成:
+Route::get('/', "HomeController@index");
+
+
+2.2 Ctrl + ` 開啟終端機視窗，
+    在終端機視窗，輸入下列指令以建立控制器:
+    php artisan make:controller HomeController
+
+
+2.3 編輯 app\Http\Controllers\HomeController.php
+    加入下列函式到控制器類別:
+    function index() {
+        return view("home.index");
+    }
+
+
+2.4 建立新資料夾: resources\views\home
+
+
+2.5 在新建的 home 資料夾建立新檔，
+    檔名: index.blade.php
+    內容如下:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab</title>
+    <style>
+        .fail {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home Index</h1>
+</body>
+</html>    
+
+
+2.6 編輯: app\Http\Controllers\HomeController.php
+    加入下列函式到 HomeCtroller 類別之中:
+
+    function index() {
+        return view('home.index');
+    }
+
+
+2.7 在終端機視窗，輸入下列指令以啟動 Web 伺服器:
+    php artisan serve
+
+
+2.8 以瀏覽器連接 http://127.0.0.1:8000/
+
+    <Note>
+    畫面應該會出現 Home Index 字樣
+
+
+
+
+3.  控制器傳入的資料，如何在 View 顯示
+
+
+3.1 編輯 app\Http\Controllers\HomeController.php
+    index() 函式修改成這樣:
+
+    function index() {
+        $scoreList = [100, 98, 50, 90, 95];
+        $userName = "Chien";
+        $lines = "line1<br>line2<br>line3";
+        $cityId = "4";
+        $viewModel = compact(
+            "scoreList", 
+            "userName", 
+            "lines", 
+            "cityId");
+        // dd($viewModel);
+        return view("home.index", $viewModel);
+    }
+
+
+3.2 編輯 resources\views\home\index.blade.php
+    在 body 區加入:
+
+    <p>Hello! {{ $userName }}</p>
+    <div>{{ $lines }}</div>
+    
+    <Note> 
+    存檔後，瀏覽器重新整理畫面觀看執行畫面
+
+
+3.3 編輯 resources\views\home\index.blade.php
+    $lines那行改成:
+
+    <div>{!! $lines !!}</div>
+
+    <Note>
+    請比較 3.2 與 3.3 的差異。
+    另外，請教 3.3 的作法有無資安疑慮
+
+
+3.4 編輯 resources\views\home\index.blade.php
+    在 body 區繼續加入:
+    <ul>
+        <li>90</li>
+        <li>91</li>
+        <li>92</li>
+    </ul>
+
+
+3.5 將 ul 的內容改成:
+
+    <ul>
+        @foreach ($scoreList as $score)
+        <li>{{$score}}</li>
+        @endforeach
+    </ul>
+
+    <Note> 
+    存檔後，瀏覽器重新整理畫面觀看執行畫面
+
+
+3.6 如果成績低於 60 分的分數要套用 fail 類別，
+    請問你覺得程式這樣子寫，好嗎?
+
+    <ul>
+    @foreach ($scoreList as $score)
+        @if ($score < 60)
+            <li class="fail">{{$score}}</li>
+        @else
+            <li>{{$score}}</li>
+        @endif
+    @endforeach
+    </ul>
+
+
+3.7 與上一段的寫法相比，這樣子如何:
+
+    <ul>
+    @foreach ($scoreList as $score)
+        <li class="{{ ($score < 60) ? 'fail' : '' }}">
+            {{$score}}
+        </li>
+    @endforeach
+    </ul>
+
+    <Note> 還有更好的寫法喔 :-) 請與老師同學討論看看。
+
+
+3.8 編輯 resources\views\home\index.blade.php
+    在 body 區繼續加入:
+
+    <select name="city" id="city">
+        <option value="2">台北</option>
+        <option value="4">台中</option>
+        <option value="6">台南</option>
+    </select>
+
+
+3.9 既然 $cityId 的內容是「4」，
+    請寫程式：讓畫面出現時，一開始選到的就是「台中」
+    
+    
+    (防雷頁)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <select name="city" id="city">
+        <option value="2" {{ ($cityId == 2) ? 'selected' : '' }}>台北</option>
+        <option value="4" {{ ($cityId == 4) ? 'selected' : '' }}>台中</option>
+        <option value="6" {{ ($cityId == 6) ? 'selected' : '' }}>台南</option>
+    </select>
+
+
+
+
+4.  Blade 畫面的繼承功能
+
+
+4.1 建立新資料夾: resources\views\layout
+
+
+4.2 建立新檔案: resources\views\layout\master.blade.php
+    內容如下:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab</title>
+
+    @yield('head')
+
+</head>
+<body>
+    <div>
+        <a href="/">Home</a> | 
+        <a href="/home/page2">Page2</a> | 
+        <a href="/home/page3">Page3</a> | 
+    </div>
+
+    @yield('content')
+    
+</body>
+</html>
+
+
+4.3 修改 resources\views\home\index.blade.php
+    新內容如下:
+
+@extends('layout.master')
+
+@section('head')
+    <style>
+        .fail {
+            color: red;
+        }
+    </style>    
+@endsection
+
+@section('content')
+    <h1>Home Index</h1>
+    <p>Hello! {{ $userName }}</p>
+    <div>{!! $lines !!}</div>
+    <ul>
+    @foreach ($scoreList as $score)
+        <li class="{{ ($score < 60) ? 'fail' : '' }}">
+            {{$score}}
+        </li>
+    @endforeach
+    </ul>
+
+    <select name="city" id="city">
+        <option value="2" {{ ($cityId == 2) ? 'selected' : '' }}>台北</option>
+        <option value="4" {{ ($cityId == 4) ? 'selected' : '' }}>台中</option>
+        <option value="6" {{ ($cityId == 6) ? 'selected' : '' }}>台南</option>
+    </select>
+
+@endsection
+
+
+4.4 存檔後，瀏覽器重新整理畫面觀看執行畫面
+    請想一下 master 與 index 的內容是如何結合的?
+
+
+4.5 新建檔案: resources\views\home\page2.blade.php
+    內容如下:
+
+@extends('layout.master')
+
+@section('content')
+    <h1>Page 2</h1>
+@endsection
+
+
+4.6 新建檔案: resources\views\home\page3.blade.php
+    內容如下:
+
+@extends('layout.master')
+
+@section('content')
+    <h1>Page 3</h1>
+@endsection
+
+
+4.7 修改 routes\web.php，
+    附加下列程式:
+
+Route::get('/home/page2', "HomeController@page2");
+Route::get('/home/page3', "HomeController@page3");
+
+
+4.8 修改 app\Http\Controllers\HomeController.php，
+    加入下列兩個函式到控制器類別:
+
+    function page2() {
+        return view("home.page2");
+    }
+
+    function page3() {
+        return view("home.page3");
+    }
+
+
+4.9 瀏覽器重新整理畫面觀看執行畫面
+

@@ -1,0 +1,71 @@
+#bodydiv {
+    position: relative;
+}
+
+#jkoleftdiv {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+
+#buycontent {
+    width: 50%;
+    float: left;
+    padding: 20px;
+}
+
+#QRdiv {
+    width: 50%;
+    float: left;
+    text-align: center;
+    display: none;
+    padding: 20px;
+}
+
+#QRtext {
+    text-align: center;
+}
+
+#QRcodetext2rd {
+    text-align: center;
+}
+
+#QRcode {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+#QRdescript {
+    text-align: center;
+    color: gray;
+}
+
+#imgdiv>ul>li {
+    background-color: #5bc0de;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+#storeway {
+    font-weight: bold;
+}
+
+.paytitle {
+    font-weight: bold;
+}
+
+.imgborder {
+    border: 2px red solid;
+}
+.helf{
+   width:50%;
+   float:left;
+   padding:20px;
+}
+.phoneletter{
+    height:90px;
+}
+.lettertext{
+    text-align:left;
+}

@@ -1,0 +1,132 @@
+body {
+    font-family: 'Microsoft JhengHei', Arial, Helvetica, sans-serif;
+    float: left;
+    background: url(../../img/slot/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+.row {
+    align-items: center;
+    justify-content: space-around;
+}
+
+.money img {
+    position: relative;
+    width: 40%;
+    display: inline-flex;
+    justify-content: center;
+    align-self: center;
+    left: 5%;
+}
+
+.machine img {
+    position: relative;
+    width: 90%;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-self: center;
+}
+
+.col-12 {
+    height:0px;
+    margin-bottom: 70%;
+}
+
+.result img {
+    width: 90%;
+    height: auto;
+    margin: 10px;
+    display: flex;
+    position: relative;
+}
+
+/* Shuffle&Stop Btn*/
+.btn-group {
+    display: flex;
+    justify-content: center;
+    right: 5%;
+}
+
+.btn-group .button {
+    border: 5px solid #000000;
+    background-color: #33bbff;
+    opacity:0.8;
+    color: #000000;
+    padding: 12px 28px;
+    width: 180px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    
+}
+
+.btn-group .button:hover {
+    background-color: #ff471a;
+    opacity:0.8;
+    color: #000000;
+}
+
+/* fruit Btn */
+.casino {
+    position: relative;
+    flex-wrap: nowrap;
+    left: 43.5%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -250%);
+    width:60%;
+}
+
+.slot1 {
+    border: 5px solid #CF5178;
+    padding: 50%;
+    background: url(../../img/slot/slot1.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.slot2 {
+    border: 5px solid #CF5178;
+    padding: 50%;
+    background: url(../../img/slot/slot2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.slot3 {
+    border: 5px solid #CF5178;
+    padding: 50%;
+    background: url(../../img/slot/slot3.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.slot4 {
+    border: 5px solid #CF5178;
+    padding: 50%;
+    background: url(../../img/slot/slot4.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.slot5 {
+    border: 5px solid #CF5178;
+    padding: 50%;
+    background: url(../../img/slot/slot5.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.slot6 {
+    border: 5px solid #CF5178;
+    padding: 50%;
+    background: url(../../img/slot/slot6.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
