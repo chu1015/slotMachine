@@ -1,7 +1,12 @@
 Git clone laravel的專案後的檔案建構
+
 (1)composer install
+
 (2)cp .env.example .env
+
 (3)php artisan key:generate
+
+
 ---------------------------------------專案資料庫----------------------------------------------------
 -- phpMyAdmin SQL Dump
 -- version 4.9.0.1
